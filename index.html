@@ -7,11 +7,7 @@ function qrCodeSuccessCallback(decodedText, decodedResult) {
   console.log(`Code matched = ${decodedText}`, decodedResult);
 }
   
-const config = {
-    fps: 10,
-    qrbox: { width: 100, height: 100 },
-    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-  }
+const config = { fps: 10, qrbox: { width: 110, height: 110 } };
   
 const html5QrCode = new Html5Qrcode("reader");
 html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
