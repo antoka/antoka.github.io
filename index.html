@@ -2,23 +2,18 @@
 <div style="width: 500px" id="reader"></div>
 <script>
 
-function onScanSuccess(decodedText, decodedResult) {
+function qrCodeSuccessCallback(decodedText, decodedResult) {
   // Handle the scanned code as you like, for example:
   console.log(`Code matched = ${decodedText}`, decodedResult);
 }
-
-const formatsToSupport = [
-  Html5QrcodeSupportedFormats.DATA_MATRIX,
-];
-const html5QrcodeScanner = new Html5QrcodeScanner(
-  "reader",
-  {
+  
+const config = {
     fps: 10,
     qrbox: { width: 100, height: 100 },
-    formatsToSupport: formatsToSupport,
     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
-    facingMode: "environment",
-  },
-  /* verbose= */ false);
-html5QrcodeScanner.render(onScanSuccess);
+  }
+  
+const html5QrCode = new Html5Qrcode("reader");
+html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+
 </script>
